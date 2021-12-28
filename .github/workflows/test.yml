@@ -60,12 +60,12 @@ jobs:
           CIBW_BUILD: cp37-* cp38-* cp39-* cp310-*
           CIBW_SKIP: '*musl* *_i686'
           CIBW_BEFORE_ALL_WINDOWS: >
-            submodules\vcpkg\bootstrap-vcpkg.bat
+            submodules\gold\submodules\vcpkg\bootstrap-vcpkg.bat
           CIBW_BEFORE_ALL_MACOS: >
-            ./submodules/vcpkg/bootstrap-vcpkg.sh
+            ./submodules/gold/submodules/vcpkg/bootstrap-vcpkg.sh
           CIBW_BEFORE_ALL_LINUX: >
             yum install -y curl zip unzip tar vim-common &&
-            ./submodules/vcpkg/bootstrap-vcpkg.sh
+            ./submodules/gold/submodules/vcpkg/bootstrap-vcpkg.sh
 
       - uses: actions/upload-artifact@v2
         with:
