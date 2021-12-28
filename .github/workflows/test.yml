@@ -15,12 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'create'
+      - run: echo '${{github.event.ref}}'
 
   hi:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - run: echo 'push'
+      - run: echo '${{github.event.ref}}'
 
   # test:
   #   name: Test (${{matrix.os}})
