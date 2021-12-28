@@ -13,8 +13,7 @@ jobs:
   github-debug:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{github.event_name}}'
-      - run: echo '${{github.event.ref}}'
+      - uses: hmarr/debug-action@v2
 
   # test:
   #   name: Test (${{matrix.os}})
