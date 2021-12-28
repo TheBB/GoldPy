@@ -10,6 +10,18 @@ on:
 
 jobs:
 
+  hello:
+    if: github.event_name == 'create'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'create'
+
+  hi:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'push'
+
   # test:
   #   name: Test (${{matrix.os}})
   #   runs-on: ${{matrix.os}}
