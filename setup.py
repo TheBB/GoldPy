@@ -51,7 +51,7 @@ class CMakeBuild(build_ext):
 
 
 setup(
-    name="pygold",
+    name="goldpy",
     version=__version__,
     author="Eivind Fonn",
     author_email="evfonn@gmail.com",

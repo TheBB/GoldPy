@@ -6,7 +6,7 @@ set(
     CACHE STRING "Vcpkg toolchain file"
 )
 
-project(pygold)
+project(goldpy)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 17)
@@ -15,5 +15,5 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 add_subdirectory(submodules/gold)
 add_subdirectory(submodules/pybind11)
 
-pybind11_add_module(pygold ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-target_link_libraries(pygold PRIVATE gold-nostdlib gold-stdlib)
+pybind11_add_module(goldpy ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
+target_link_libraries(goldpy PRIVATE gold-nostdlib gold-stdlib)

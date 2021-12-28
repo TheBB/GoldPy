@@ -122,7 +122,7 @@ public:
 };
 
 
-PYBIND11_MODULE(pygold, m) {
+PYBIND11_MODULE(goldpy, m) {
     py::register_exception<EvalException>(m, "EvalException");
     py::register_exception<InternalException>(m, "InternalException");
     py::class_<EvaluationContext>(m, "EvaluationContext")
