@@ -10,18 +10,10 @@ on:
 
 jobs:
 
-  hello:
-    if: github.event_name == 'create'
+  github-debug:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'create'
-      - run: echo '${{github.event.ref}}'
-
-  hi:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'push'
+      - run: echo '${{github.event_name}}'
       - run: echo '${{github.event.ref}}'
 
   # test:
@@ -53,7 +45,7 @@ jobs:
   #       run: ctest --preset ci-${{matrix.os}} --build-config Debug
 
   build_wheels:
-    if: github.event_name == 'create' && startsWith(github.event.ref, 'refs/tags/v')
+    if: github.event_name == 'create' && startsWith(github.event.ref, 'v')
     name: Build wheels (${{matrix.os}})
     # needs: [test]
     runs-on: ${{matrix.os}}
@@ -86,7 +78,7 @@ jobs:
           path: ./wheelhouse/*.whl
 
   upload_wheels:
-    if: github.event_name == 'create' && startsWith(github.event.ref, 'refs/tags/v')
+    if: github.event_name == 'create' && startsWith(github.event.ref, 'v')
     name: Upload wheels
     needs: [build_wheels]
     runs-on: ubuntu-latest
