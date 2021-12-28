@@ -7,7 +7,7 @@ import subprocess
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 
 
 class CMakeExtension(Extension):
