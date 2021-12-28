@@ -12,6 +12,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+set(GOLD_BUILD_UTILS OFF)
+
 add_subdirectory(submodules/gold)
 add_subdirectory(submodules/pybind11)
 

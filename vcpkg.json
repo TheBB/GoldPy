@@ -6,9 +6,7 @@
             "name": "boost-filesystem",
             "platform": "osx"
         },
-        "cxxopts",
         "fmt",
-        "nlohmann-json",
         "pegtl"
     ]
 }
