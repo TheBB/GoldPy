@@ -57,7 +57,7 @@ setup(
     url="https://github.com/TheBB/Gold",
     description="Python bindings to the Gold language",
     long_description="",
-    ext_modules=[CMakeExtension('pygold')],
+    ext_modules=[CMakeExtension('goldpy')],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.6",
