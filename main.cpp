@@ -138,7 +138,18 @@ PYBIND11_MODULE(goldpy, m) {
                 throw pybind11::type_error("incompatible function arguments");
             EvaluationContext ctx;
             return obj(ctx, (std::vector<Object>&)caster);
-        });
+        })
+        .def(py::pickle(
+            [](const Object& obj) {
+                return py::make_tuple(obj.serialize());
+            },
+            [](py::tuple t) {
+                if (t.size() != 1)
+                    throw std::runtime_error("Invalid pickle state");
+                return Object::deserialize(t[0].cast<std::string>());
+            }
+        ))
+        ;
     m.def("evaluate_string", py::overload_cast<std::string>(&evaluate_string));
     m.def("evaluate_string", py::overload_cast<EvaluationContext&, std::string>(&evaluate_string));
     m.def("evaluate_file", py::overload_cast<std::string>(&evaluate_file));
