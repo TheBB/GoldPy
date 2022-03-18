@@ -19,3 +19,7 @@ add_subdirectory(submodules/pybind11)
 
 pybind11_add_module(goldpy ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 target_link_libraries(goldpy PRIVATE gold-nostdlib gold-stdlib)
+
+if(APPLE)
+    add_compile_definitions(GOLD_USE_BOOST_FILESYSTEM)
+endif()
