@@ -137,7 +137,7 @@ PYBIND11_MODULE(goldpy, m) {
             if (!caster.load(args, false))
                 throw pybind11::type_error("incompatible function arguments");
             EvaluationContext ctx;
-            return obj(ctx, (std::vector<Object>&)caster);
+            return obj.call(ctx, (std::vector<Object>&)caster);
         })
         .def(py::pickle(
             [](const Object& obj) {
