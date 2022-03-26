@@ -132,12 +132,15 @@ PYBIND11_MODULE(goldpy, m) {
         .def(py::init<>())
         .def("find", &LibFinder::find);
     py::class_<Object>(m, "Object")
-        .def("__call__", [](Object& obj, py::args args) {
-            py::detail::type_caster<std::vector<Object>> caster;
-            if (!caster.load(args, false))
+        .def("__call__", [](Object& obj, py::args args, py::kwargs kwargs) {
+            py::detail::type_caster<std::vector<Object>> args_caster;
+            if (!args_caster.load(args, false))
+                throw pybind11::type_error("incompatible function arguments");
+            py::detail::type_caster<std::map<std::string, Object>> kwargs_caster;
+            if (!kwargs_caster.load(kwargs, false))
                 throw pybind11::type_error("incompatible function arguments");
             EvaluationContext ctx;
-            return obj.call(ctx, (std::vector<Object>&)caster);
+            return obj.call(ctx, Object::list((std::vector<Object>&)args_caster), Object::map((std::map<std::string, Object>&)kwargs_caster));
         })
         .def(py::pickle(
             [](const Object& obj) {
